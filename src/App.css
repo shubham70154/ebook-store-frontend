@@ -685,3 +685,122 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Dummy Payment Page */
+
+.payment-page {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.payment-card {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+}
+
+.payment-card h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.payment-subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.payment-order-info {
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.payment-order-info div {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 12px 0;
+}
+
+.payment-order-info span {
+    color: #64748b;
+}
+
+.payment-amount {
+    color: #15803d;
+    font-size: 20px;
+}
+
+.dummy-payment-notice {
+    padding: 13px;
+    margin: 20px 0;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.pay-now-button,
+.simulate-failure-button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 12px;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.pay-now-button {
+    background: #15803d;
+    color: white;
+}
+
+.simulate-failure-button {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.pay-now-button:disabled,
+.simulate-failure-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.payment-result {
+    margin-top: 25px;
+    padding: 22px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.payment-result h2 {
+    margin-bottom: 12px;
+}
+
+.payment-result p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.payment-success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.payment-failure {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.payment-action-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #2563eb;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
