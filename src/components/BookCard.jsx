@@ -36,6 +36,7 @@ function BookCard({ book }) {
                 <Link to={`/books/${book.id}`} className="details-button">
                     View Details
                 </Link>
+                
                 <AddToCartButton book={book} />
             </div>
         </div>
