@@ -15,18 +15,6 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import "./App.css";
 
-function Home() {
-  return (
-    <div className="home-container">
-      <h1>Welcome to E-Book Store</h1>
-      <p>Discover your next favourite book.</p>
-
-      <Link to="/books">
-        <button>Explore Books</button>
-      </Link>
-    </div>
-  );
-}
 
 function Navbar() {
   const { user, logout, isAuthenticated } = useAuth();
@@ -43,9 +31,8 @@ function Navbar() {
         E-Book Store
       </Link>
 
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/books">Books</Link>
+      <nav>        
+        <Link to="/">Books</Link>
 
         {isAuthenticated ? (
           <>
@@ -82,8 +69,7 @@ function App() {
     <div className="app">
       <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <Routes>        
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
