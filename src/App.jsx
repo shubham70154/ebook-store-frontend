@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, Link } from "react-router-dom";
-
+import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Books from "./pages/Books";
@@ -29,6 +29,7 @@ function App() {
                 <nav>
                     <Link to="/">Home</Link>
                     <Link to="/books">Books</Link>
+                    <Link to="/cart">Cart</Link>
                     <Link to="/login">Login</Link>
                     <Link to="/register">Register</Link>
                 </nav>
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/books" element={<Books />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="/books/:id" element={<BookDetails />} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>

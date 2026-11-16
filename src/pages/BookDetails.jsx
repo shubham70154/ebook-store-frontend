@@ -93,6 +93,7 @@ function BookDetails() {
                             ? "In Stock"
                             : "Out of Stock"}
                     </p>
+                    
                     <AddToCartButton book={book} />
                 </div>
             </div>
