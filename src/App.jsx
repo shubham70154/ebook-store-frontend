@@ -70,6 +70,7 @@ function App() {
       <Navbar />
 
       <Routes>        
+        <Route path="/" element={<Books />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
