@@ -14,7 +14,7 @@ export const registerUser = async (userData) => {
 // Get currently authenticated user using POST
 export const getCurrentUser = async () => {
     const response = await axiosInstance.post(
-        "/api/auth/me"
+        "/api/auth/login"
     );
 
     return response.data;
