@@ -11,9 +11,11 @@ export const registerUser = async (userData) => {
     return response.data;
 };
 
-// Get currently authenticated user
+// Get currently authenticated user using POST
 export const getCurrentUser = async () => {
-    const response = await axiosInstance.get("/api/auth/me");
+    const response = await axiosInstance.post(
+        "/api/auth/me"
+    );
 
     return response.data;
 };
