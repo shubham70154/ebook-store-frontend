@@ -11,7 +11,6 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use((config) => {
 
     const authHeader = sessionStorage.getItem("authHeader");
-
     if (authHeader) {
         config.headers.Authorization = authHeader;
     }
