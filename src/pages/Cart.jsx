@@ -111,11 +111,10 @@ function Cart() {
 
             {items.length === 0 ? (
                 <div className="empty-cart">
-                    <h2>Your cart is empty</h2>
-                    <p>You haven't added any books yet.</p>
+                    <h2>Your cart is empty</h2>                    
 
                     <Link to="/books" className="continue-shopping-button">
-                        Explore Books
+                        Continue Shopping
                     </Link>
                 </div>
             ) : (
@@ -218,12 +217,7 @@ function Cart() {
                                 <strong>
                                     ₹{Number(cart.subtotal).toFixed(2)}
                                 </strong>
-                            </div>
-
-                            <p className="summary-note">
-                                Final inventory availability will be checked
-                                again during checkout.
-                            </p>
+                            </div>                            
 
                             <Link to="/checkout" className="checkout-button">
                                 Proceed to Checkout

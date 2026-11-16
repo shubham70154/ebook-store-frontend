@@ -65,12 +65,9 @@ function OrderHistory() {
             <div className="order-history-header">
                 <div>
                     <h1>My Orders</h1>
-                    <p>View your previous orders and payment status.</p>
+                    
                 </div>
-
-                <Link to="/books" className="continue-shopping-button">
-                    Continue Shopping
-                </Link>
+                
             </div>
 
             {error && (
@@ -79,11 +76,10 @@ function OrderHistory() {
 
             {!error && orders.length === 0 && (
                 <div className="empty-orders">
-                    <h2>No orders found</h2>
-                    <p>You haven't placed any orders yet.</p>
+                    <h2>No orders found</h2>                    
 
                     <Link to="/books" className="continue-shopping-button">
-                        Explore Books
+                        Continue Shopping
                     </Link>
                 </div>
             )}
