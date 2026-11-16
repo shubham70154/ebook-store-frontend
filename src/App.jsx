@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Books from "./pages/Books";
 import BookDetails from "./pages/BookDetails";
+import Checkout from "./pages/Checkout";
 
 import "./App.css";
 
@@ -36,14 +37,15 @@ function App() {
             </header>
 
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/books" element={<Books />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/books/:id" element={<BookDetails />} />
-                <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/books" element={<Books />} />
+              <Route path="/books/:id" element={<BookDetails />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
         </div>
     );
 }

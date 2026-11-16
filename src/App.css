@@ -535,3 +535,153 @@
         width: 100%;
     }
 }
+
+
+
+/* Checkout Page */
+
+.checkout-page {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.checkout-subtitle {
+    color: #64748b;
+    margin: 10px 0 25px;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 25px;
+    align-items: start;
+}
+
+.checkout-items,
+.checkout-summary {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-items h2,
+.checkout-summary h2 {
+    margin-bottom: 20px;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.checkout-item:last-child {
+    border-bottom: none;
+}
+
+.checkout-item h3 {
+    margin-bottom: 8px;
+}
+
+.checkout-item p {
+    margin-top: 5px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.checkout-item strong {
+    white-space: nowrap;
+    color: #15803d;
+}
+
+.checkout-summary .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 18px 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 18px;
+    margin-top: 18px;
+    font-size: 17px;
+}
+
+.place-order-button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 25px;
+    background: #15803d;
+    color: white;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.place-order-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.back-to-cart-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.order-success-card {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+}
+
+.success-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 30px;
+}
+
+.order-success-card h1 {
+    margin-bottom: 12px;
+}
+
+.order-info {
+    margin: 25px 0;
+    padding: 18px;
+    background: #f8fafc;
+    text-align: left;
+    border-radius: 8px;
+}
+
+.order-info p {
+    margin: 10px 0;
+}
+
+.payment-pending-message {
+    color: #b45309;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 750px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+}

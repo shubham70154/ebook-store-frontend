@@ -1,5 +1,11 @@
 
-import { createContext, useContext, useState } from "react";
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useState
+} from "react";
+
 import { getCurrentUser } from "../api/authApi";
 
 const AuthContext = createContext();
@@ -7,21 +13,48 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
 
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    // Login using HTTP Basic authentication
+    // Restore login when the application starts.
+    useEffect(() => {
+
+        const restoreSession = async () => {
+
+            const authHeader = sessionStorage.getItem("authHeader");
+
+            if (!authHeader) {
+                setLoading(false);
+                return;
+            }
+
+            try {
+                const currentUser = await getCurrentUser();
+                setUser(currentUser);
+
+            } catch (error) {
+                sessionStorage.removeItem("authHeader");
+                setUser(null);
+
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        restoreSession();
+
+    }, []);
+
+    // Login
     const login = async (username, password) => {
 
         const credentials = btoa(`${username}:${password}`);
         const authHeader = `Basic ${credentials}`;
 
-        // Store credentials before calling the API.
         sessionStorage.setItem("authHeader", authHeader);
 
         try {
             setLoading(true);
 
-            // Backend validates credentials here.
             const currentUser = await getCurrentUser();
 
             setUser(currentUser);
@@ -61,7 +94,6 @@ export function AuthProvider({ children }) {
     );
 }
 
-// Custom hook to access authentication context
 export function useAuth() {
     return useContext(AuthContext);
 }
