@@ -68,55 +68,6 @@ function Checkout() {
         return <p className="error-message">{error}</p>;
     }
 
-    // Show confirmation after successful order creation.
-    // if (createdOrder) {
-    //     return (
-    //         <div className="checkout-page">
-    //             <div className="order-success-card">
-    //                 <div className="success-icon">✓</div>
-
-    //                 <h1>Order Created Successfully!</h1>
-
-    //                 <p>Your order has been created.</p>
-
-    //                 <div className="order-info">
-    //                     <p>
-    //                         <strong>Order ID:</strong>{" "}
-    //                         {createdOrder.id}
-    //                     </p>
-
-    //                     <p>
-    //                         <strong>Status:</strong>{" "}
-    //                         {createdOrder.status}
-    //                     </p>
-
-    //                     <p>
-    //                         <strong>Total Amount:</strong>{" "}
-    //                         ₹{Number(createdOrder.totalAmount).toFixed(2)}
-    //                     </p>
-
-    //                     {createdOrder.reservationExpiresAt && (
-    //                         <p>
-    //                             <strong>Reservation Expires:</strong>{" "}
-    //                             {new Date(
-    //                                 createdOrder.reservationExpiresAt
-    //                             ).toLocaleString()}
-    //                         </p>
-    //                     )}
-    //                 </div>
-
-    //                 <p className="payment-pending-message">
-    //                     Your payment is pending. Continue to the payment
-    //                     step to complete your order.
-    //                 </p>
-
-    //                 <Link to="/books" className="continue-shopping-button">
-    //                     Continue Shopping
-    //                 </Link>
-    //             </div>
-    //         </div>
-    //     );
-    // }
 
     const items = cart?.items || [];
     const hasUnavailableItems = items.some(item => !item.available);
@@ -124,8 +75,7 @@ function Checkout() {
     return (
         <div className="checkout-page">
             <h1>Checkout</h1>
-            <p className="checkout-subtitle">
-                Review your order before placing it.
+            <p className="checkout-subtitle">                
             </p>
 
             {error && (

@@ -95,11 +95,7 @@ function Payment() {
         <div className="payment-page">
             <div className="payment-card">
 
-                <h1>Dummy Payment</h1>
-
-                <p className="payment-subtitle">
-                    Complete your order using our test payment options.
-                </p>
+                <h1>Dummy Payment</h1>                
 
                 <div className="payment-order-info">
                     <div>
@@ -141,21 +137,12 @@ function Payment() {
                         <p>
                             {paymentSucceeded
                                 ? "Your order has been confirmed."
-                                : "Your payment could not be completed. The reserved book quantities have been restored."}
+                                : "Your payment could not be completed."}
                         </p>
 
                         {payment && (
                             <>
-                                <p>
-                                    <strong>Payment ID:</strong>{" "}
-                                    {payment.id}
-                                </p>
-
-                                <p>
-                                    <strong>Transaction Reference:</strong>{" "}
-                                    {payment.transactionReference}
-                                </p>
-
+                                
                                 <p>
                                     <strong>Payment Status:</strong>{" "}
                                     {payment.status}
@@ -206,7 +193,7 @@ function Payment() {
                         >
                             {processing
                                 ? "Processing..."
-                                : "Simulate Payment Failure"}
+                                : "Payment Failure"}
                         </button>
                     </>
                 )}

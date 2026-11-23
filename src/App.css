@@ -540,11 +540,6 @@
     padding: 0 20px;
 }
 
-.checkout-subtitle {
-    color: #64748b;
-    margin: 10px 0 25px;
-}
-
 .checkout-layout {
     display: grid;
     grid-template-columns: 1fr 320px;

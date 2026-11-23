@@ -45,8 +45,8 @@ function Login() {
 
             <form className="auth-card" onSubmit={handleSubmit}>
 
-                <h2>Welcome Back</h2>
-                <p>Login to your E-Book Store account</p>
+                <h2>Login to your account</h2>
+                <p></p>
 
                 {error && (
                     <div className="error-message">

@@ -66,8 +66,7 @@ function Register() {
 
             <form className="auth-card" onSubmit={handleSubmit}>
 
-                <h2>Create Account</h2>
-                <p>Register to explore our book collection</p>
+                <h2>Create Account</h2>                
 
                 {error && (
                     <div className="error-message">
