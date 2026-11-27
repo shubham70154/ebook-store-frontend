@@ -1,13 +1,11 @@
+
 import axiosInstance from "./axiosInstance";
 
-export const processPayment = async (orderId, simulateFailure = false) => {
+export const processPayment = async (orderId, paymentMethod) => {
     const response = await axiosInstance.post(
         `/api/payments/${orderId}/process`,
-        null,
         {
-            params: {
-                simulateFailure
-            }
+            paymentMethod
         }
     );
 

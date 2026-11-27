@@ -1086,3 +1086,30 @@
         flex-direction: column;
     }
 }
+
+
+.payment-method-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px 0 24px;
+}
+
+.payment-method-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.payment-method-option:has(input:checked) {
+    border-color: #2563eb;
+    background: #eff6ff;
+}
+
+.payment-method-option input {
+    cursor: pointer;
+}

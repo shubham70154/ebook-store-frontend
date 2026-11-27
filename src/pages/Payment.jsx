@@ -11,6 +11,8 @@ function Payment() {
     const [order, setOrder] = useState(null);
     const [payment, setPayment] = useState(null);
 
+    const [paymentMethod, setPaymentMethod] = useState("CREDIT_CARD");
+
     const [loading, setLoading] = useState(true);
     const [processing, setProcessing] = useState(false);
     const [error, setError] = useState("");
@@ -26,6 +28,7 @@ function Payment() {
 
             const data = await getOrderById(orderId);
             setOrder(data);
+
         } catch (error) {
             setError(
                 error.response?.data?.message ||
@@ -36,12 +39,15 @@ function Payment() {
         }
     };
 
-    const handlePayment = async (simulateFailure) => {
+    const handlePayment = async () => {
         try {
             setProcessing(true);
             setError("");
 
-            const result = await processPayment(orderId, simulateFailure);
+            const result = await processPayment(
+                orderId,
+                paymentMethod
+            );
 
             setPayment(result);
 
@@ -49,7 +55,7 @@ function Payment() {
                 ...currentOrder,
                 status: result.status === "SUCCESS"
                     ? "PAID"
-                    : "PAYMENT_FAILED"
+                    : currentOrder.status
             }));
 
         } catch (error) {
@@ -83,10 +89,6 @@ function Payment() {
         return null;
     }
 
-    const paymentCompleted =
-        order.status === "PAID" ||
-        order.status === "PAYMENT_FAILED";
-
     const paymentSucceeded =
         payment?.status === "SUCCESS" ||
         order.status === "PAID";
@@ -95,7 +97,7 @@ function Payment() {
         <div className="payment-page">
             <div className="payment-card">
 
-                <h1>Dummy Payment</h1>                
+                <h1>Complete Your Payment</h1>
 
                 <div className="payment-order-info">
                     <div>
@@ -120,29 +122,24 @@ function Payment() {
                     <p className="error-message">{error}</p>
                 )}
 
-                {paymentCompleted ? (
-                    <div
-                        className={
-                            paymentSucceeded
-                                ? "payment-result payment-success"
-                                : "payment-result payment-failure"
-                        }
-                    >
-                        <h2>
-                            {paymentSucceeded
-                                ? "Payment Successful!"
-                                : "Payment Failed"}
-                        </h2>
+                {paymentSucceeded ? (
+                    <div className="payment-result payment-success">
+                        <h2>Payment Successful!</h2>
 
-                        <p>
-                            {paymentSucceeded
-                                ? "Your order has been confirmed."
-                                : "Your payment could not be completed."}
-                        </p>
+                        <p>Your order has been confirmed.</p>
 
                         {payment && (
                             <>
-                                
+                                <p>
+                                    <strong>Payment Method:</strong>{" "}
+                                    {payment.paymentMethod.replaceAll("_", " ")}
+                                </p>
+
+                                <p>
+                                    <strong>Transaction Reference:</strong>{" "}
+                                    {payment.transactionReference}
+                                </p>
+
                                 <p>
                                     <strong>Payment Status:</strong>{" "}
                                     {payment.status}
@@ -151,52 +148,81 @@ function Payment() {
                         )}
 
                         <Link
+                            to="/orders"
+                            className="payment-action-link"
+                        >
+                            View My Orders
+                        </Link>
+                    </div>
+                ) : order.status !== "PENDING_PAYMENT" ? (
+                    <div className="payment-result payment-failure">
+                        <h2>Payment Not Available</h2>
+
+                        <p>
+                            This order cannot be paid because its current
+                            status is {order.status}.
+                        </p>
+
+                        <Link
                             to="/books"
                             className="payment-action-link"
                         >
                             Continue Shopping
                         </Link>
                     </div>
-                ) : order.status !== "PENDING_PAYMENT" ? (
-                    <div className="payment-result payment-failure">
-                        <h2>Payment Not Available</h2>
-                        <p>
-                            This order cannot be paid because its current
-                            status is {order.status}.
-                        </p>
-
-                        <Link to="/books" className="payment-action-link">
-                            Continue Shopping
-                        </Link>
-                    </div>
                 ) : (
                     <>
-                        <div className="dummy-payment-notice">
-                            This is a test payment page. No real money
-                            will be charged.
+                        
+
+                        <h3>Select Payment Method</h3>
+
+                        <div className="payment-method-options">
+
+                            <label className="payment-method-option">
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="CREDIT_CARD"
+                                    checked={paymentMethod === "CREDIT_CARD"}
+                                    onChange={(e) =>
+                                        setPaymentMethod(e.target.value)
+                                    }
+                                    disabled={processing}
+                                />
+
+                                <span>Credit Card</span>
+                            </label>
+
+                            <label className="payment-method-option">
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="DEBIT_CARD"
+                                    checked={paymentMethod === "DEBIT_CARD"}
+                                    onChange={(e) =>
+                                        setPaymentMethod(e.target.value)
+                                    }
+                                    disabled={processing}
+                                />
+
+                                <span>Debit Card</span>
+                            </label>
+
                         </div>
 
                         <button
                             className="pay-now-button"
-                            onClick={() => handlePayment(false)}
+                            onClick={handlePayment}
                             disabled={processing}
                         >
                             {processing
                                 ? "Processing..."
-                                : `Pay Now ₹${Number(order.totalAmount).toFixed(2)}`}
-                        </button>
-
-                        <button
-                            className="simulate-failure-button"
-                            onClick={() => handlePayment(true)}
-                            disabled={processing}
-                        >
-                            {processing
-                                ? "Processing..."
-                                : "Payment Failure"}
+                                : `Pay Now ₹${Number(order.totalAmount).toFixed(2)}`
+                            }
                         </button>
                     </>
                 )}
+
             </div>
         </div>
     );
