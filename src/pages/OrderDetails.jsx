@@ -131,15 +131,7 @@ function OrderDetails() {
                             ₹{Number(order.totalAmount).toFixed(2)}
                         </strong>
                     </div>
-
-                    {order.reservationExpiresAt && (
-                        <div className="summary-row">
-                            <span>Reservation Expires</span>
-                            <strong>
-                                {formatDate(order.reservationExpiresAt)}
-                            </strong>
-                        </div>
-                    )}
+                    
 
                     {order.status === "PENDING_PAYMENT" && (
                         <Link
